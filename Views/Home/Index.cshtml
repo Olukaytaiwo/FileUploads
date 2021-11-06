@@ -64,6 +64,23 @@
     <input type="file" id="single-file" name="someForm.File" onchange="UploadFileToModel(event)" />
 </div>
 
+
+<div>
+    <h4> Payment Evidence to Model(JS)</h4>
+    <form asp-controller="Home" asp-action="PaymentEvidence" enctype="multipart/form-data" method="post">
+        <input type="text" id="recieptname" value="recieptName" name="PaymentUpload.RecieptName" />
+        <input type="file" id="reciept-file" name="PaymentUpload.Reciept" />
+
+        <input type="text" id="excelName" value="excelName" name="PaymentUpload.ExcelName" />
+        <input type="file" id="reciept-file" name="PaymentUpload.Excel" />
+
+        <button type="submit">  Submit  </button>
+
+    </form>
+
+
+</div>
+
 @section scripts{
     <script>
         var UploadFile = function (e) {
@@ -99,6 +116,19 @@
 
             axios.post("Home/FileInModel", formData);
         }
+
+        //var UploadPaymentToModel = function (e) {
+        //    var fileName = document.getElementById("file-Name").value;
+        //    var file = e.target.files[0];
+
+        //    var formData = new FormData();
+        //    formData.append("PaymentUpload.Reciept", file);
+        //    formData.append("PaymentUpload.Name", fileName);
+
+        //    axios.post("Home/PaymentEvidence", formData);
+        //}
+
+        
 
     </script>
 

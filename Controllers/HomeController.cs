@@ -64,6 +64,21 @@ namespace FileUploads.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult PaymentEvidence(PaymentUpload paymentUpload)
+        {
+            var dir = _env.ContentRootPath;
+            using (var fileStream = new FileStream(Path.Combine(_dir, $"excel{paymentUpload.ExcelName}"), FileMode.Create, FileAccess.Write))
+            {
+                paymentUpload.Excel.CopyTo(fileStream);
+            }
+            using (var fileStream = new FileStream(Path.Combine(_dir, $"reciept{paymentUpload.RecieptName}.png"), FileMode.Create, FileAccess.Write))
+            {
+                paymentUpload.Reciept.CopyTo(fileStream);
+            }
+
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult Privacy()
         {
