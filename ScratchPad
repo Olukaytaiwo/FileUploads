@@ -1,0 +1,8 @@
+       public object GetPropertyValue(object objType, string propertyName)
+        {
+            return objType.GetType().GetProperties()
+               .Single(pi => pi.Name == propertyName)
+               .GetValue(objType, null);
+        }
+        
+        var operatingBusinessAddress = GetPropertyValue(propObj, "OperatingBusinessAddress").ToString();
